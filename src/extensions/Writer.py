@@ -62,12 +62,19 @@ class Writer:
 			t["loop"] = 1 if Launcher.op('CTRL').pars(f'Loop{i}')[0].eval() else 0
 		return cue
 	def WriteFx(self, cue):
+		# TODO: just save contents of bus.Cuelist
+
 		for i,t in enumerate(cue['tracks']):
-			base = []
-			chain = Launcher.op('bus{}'.format(i)).FxChain()
-			for f in chain:
-				base.append({'id': f.par.Name.eval(), 'settings': f.Save()})
-			t["plugins"] = base
+			# base = []
+			# chain = Launcher.op('bus{}'.format(i)).FxChain()
+			# for f in chain:
+			# 	base.append({'id': f.par.Name.eval(), 'settings': f.Save()})
+			# t["plugins"] = base
+			
+			bus = Launcher.op('bus{}'.format(i))
+			# cuelist = bus.Cuelist.SaveBusStateToCue(bus.Cuelist.par.Selected.eval())
+			cuelist = bus.Cuelist.GetCuelist()
+			t["plugins"] = cuelist
 		return cue
 	def WriteCue(self, scene, cid):
 		cue = scene["cues"][cid]

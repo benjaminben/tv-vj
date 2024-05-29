@@ -7,11 +7,28 @@ class BusClass:
 		self.o = owner
 		self.SelectStage = DependDict({})
 		self.FX_CHAIN = DependList(self.FxChain())
+		self.Cuelist = self.o.op('cuelist/Effect')
 		print(self.SelectStage)
 	def Boop(self, s):
 		print(s)
 	def FxChain(self):
 		return self.o.fetch('fx_chain', [])
+	def StageCueFromJson(self, cue):
+		# print(type(cue), cue)
+		# We're looking for a 2d array...
+		try:
+			if type(cue) == list and len(cue) > 0:
+				if type(cue[0]) == list:
+					self.Cuelist.par.Cuelistjson = cue
+					self.FillFx(cue[0])
+				else:
+					self.Cuelist.par.Cuelistjson = [cue]
+					self.FillFx(cue)
+			else:
+				self.Cuelist.par.Cuelistjson = [cue]
+				self.FillFx(cue)
+		except Exception as e:
+			debug("StageCueFromJson Exception:", e)
 	def FillFx(self, chain):
 		fxChain = self.FxChain()[:]
 		ptChain = chain[:]

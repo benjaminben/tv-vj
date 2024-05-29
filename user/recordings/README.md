@@ -1,1 +1,0 @@
-Default output location for user recordings (can be changed under `settings > Output Path`) 

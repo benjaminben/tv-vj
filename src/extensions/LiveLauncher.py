@@ -65,7 +65,8 @@ class LiveLauncher:
 		# have to offset - 1... TODO: please standardize
 		for i,t in enumerate(cue["tracks"]):
 			bus = self.o.op('bus{}'.format(i))
-			bus.FillFx(t["plugins"].getRaw())
+			# bus.FillFx(t["plugins"].getRaw())
+			bus.StageCueFromJson(t["plugins"].getRaw())
 	def SetOperand(self, cue):
 		for t in ctrl_panels:
 			if (t.digits == 0): #if master, dip now
