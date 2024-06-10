@@ -13,9 +13,14 @@ class BusClass:
 		print(s)
 	def FxChain(self):
 		return self.o.fetch('fx_chain', [])
+	def InitScene(self, cue):
+		self.StageCueFromJson(cue)
+		self.Cuelist.par.Ondeck = 1
 	def StageCueFromJson(self, cue):
 		# print(type(cue), cue)
 		# We're looking for a 2d array...
+		# self.FillFx(cue) # TESTING
+		# return
 		try:
 			if type(cue) == list and len(cue) > 0:
 				if type(cue[0]) == list:
