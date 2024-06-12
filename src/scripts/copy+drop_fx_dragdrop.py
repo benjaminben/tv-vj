@@ -9,7 +9,6 @@ def onHoverStartGetAccept(comp, info):
 		return False
 
 def onDropGetResults(comp, info):
-	print("HELLO", comp, info)
 	bus = op(comp.parent().par.Bus)
 	dragItems = info['dragItems']
 	if dragItems[0] == 'PLUGIN_PRESET':

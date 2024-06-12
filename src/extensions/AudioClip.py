@@ -18,7 +18,7 @@ class AudioClip:
 	def __init__(self, ownerComp):
 		# The component to which this extension is attached
 		self.ownerComp = ownerComp
-
+		self.Audioplaychop = ownerComp.op('audioplay1')
 		# properties
 		TDF.createProperty(self, 'MyProperty', value=0, dependable=True,
 						   readOnly=False)

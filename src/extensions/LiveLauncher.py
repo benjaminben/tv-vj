@@ -108,7 +108,7 @@ class LiveLauncher:
 	def SetLayer(self, trackIdx, data):
 		self.SetSource(trackIdx, data['source'])
 		bus = self.o.op('bus{}'.format(trackIdx))
-		bus.FillFx(data['plugins'].getRaw())
+		bus.InitScene(data['plugins'].getRaw())
 		bus.par.Operand = data['operand']
 		print(data, track)
 		return
