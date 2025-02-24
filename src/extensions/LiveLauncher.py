@@ -34,7 +34,7 @@ class LiveLauncher:
 	def SetSource(self, idx, src):
 		bus = buses[idx-1]
 		bus.par.Source = src
-		bus.par.Sourcetype = 'file'
+		#bus.par.Sourcetype = 'file'
 		return
 	def SetSelect(self, idx, src):
 		bus = buses[idx-1]
